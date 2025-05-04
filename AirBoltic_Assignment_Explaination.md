@@ -119,4 +119,4 @@ I've also worked with imperfect tools in earlier-stage companies, where I had to
 
 ### Summary
 
-This assignment was a chance to demonstrate my experience designing clean, scalable, and trustworthy analytics infrastructure. All of my choices—from schema layout to CI/CD design—were driven by my experience building real-world systems that balance structure and agility. My [`README.md`](https://github.com/prakhar-sriv/air-boltic-analytics/blob/main/README.md) provides full documentation of the data model, assumptions, structure, and next steps for scaling this project into production.
+This assignment was a chance to demonstrate my experience designing clean, scalable, and trustworthy analytics infrastructure. All of my choices—from schema layout to CI/CD design—were driven by my experience building real-world systems that balance structure and agility. My [`README.md`](https://github.com/prakharsdev/Air-Boltic-Analytics-Engineering/blob/master/README.md) provides full documentation of the data model, assumptions, structure, and next steps for scaling this project into production.
