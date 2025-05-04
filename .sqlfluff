@@ -1,0 +1,9 @@
+[sqlfluff]
+dialect = postgres 
+templater = dbt
+exclude_rules = L009,L031  
+max_line_length = 120
+
+[sqlfluff:templater:dbt]
+project_dir = C:/Users/Allthingdata/DE_project/Bolt
+profiles_dir = C:/Users/Allthingdata/.dbt

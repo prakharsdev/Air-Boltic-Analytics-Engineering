@@ -1,0 +1,141 @@
+Folder PATH listing for volume Acer
+Volume serial number is 0E30-05C2
+C:.
+¦   .pre-commit-config.yaml
+¦   .sqlfluff
+¦   .user.yml
+¦   dbt_project.yml
+¦   flatten_aeroplane_model.py
+¦   project_structure.txt
+¦   requirements.txt
+¦   
++---dbt_packages
++---logs
+¦       dbt.log
+¦       
++---macros
+¦       check_positive_ticket_price.sql
+¦       check_standard_phone_format.sql
+¦       check_valid_email.sql
+¦       
++---models
+¦   ¦   schema.yml
+¦   ¦   
+¦   +---marts
+¦   ¦   +---dimensions
+¦   ¦   ¦       dim_aeroplane_models.sql
+¦   ¦   ¦       dim_customers.sql
+¦   ¦   ¦       
+¦   ¦   +---facts
+¦   ¦           fct_trips.sql
+¦   ¦           
+¦   +---sources
+¦   ¦       sources.yml
+¦   ¦       
+¦   +---staging
+¦           stg_aeroplane_models.sql
+¦           stg_customers.sql
+¦           stg_trips.sql
+¦           
++---seeds
+¦       aeroplane_model.json
+¦       aeroplane_models.csv
+¦       customers.csv
+¦       trips.csv
+¦       
++---snapshots
+¦       snap_customers.sql
+¦       
++---target
+    ¦   catalog.json
+    ¦   graph.gpickle
+    ¦   graph_summary.json
+    ¦   index.html
+    ¦   manifest.json
+    ¦   partial_parse.msgpack
+    ¦   run_results.json
+    ¦   semantic_manifest.json
+    ¦   
+    +---compiled
+    ¦   +---Bolt
+    ¦       +---models
+    ¦           +---marts
+    ¦           ¦   +---dimensions
+    ¦           ¦   ¦       dim_aeroplane_models.sql
+    ¦           ¦   ¦       dim_customers.sql
+    ¦           ¦   ¦       
+    ¦           ¦   +---facts
+    ¦           ¦           fct_trips.sql
+    ¦           ¦           
+    ¦           +---schema.yml
+    ¦           ¦       check_positive_ticket_price_fct_trips_ticket_price.sql
+    ¦           ¦       check_standard_phone_format_stg_customers_phone_number.sql
+    ¦           ¦       check_valid_email_stg_customers_email.sql
+    ¦           ¦       not_null_aeroplane_models_manufacturer.sql
+    ¦           ¦       not_null_aeroplane_models_model.sql
+    ¦           ¦       not_null_customers__Customer_ID_.sql
+    ¦           ¦       not_null_customers__Name_.sql
+    ¦           ¦       not_null_dim_aeroplane_models_aircraft_model.sql
+    ¦           ¦       not_null_dim_customers_customer_id.sql
+    ¦           ¦       not_null_fct_trips_ticket_price.sql
+    ¦           ¦       not_null_fct_trips_trip_id.sql
+    ¦           ¦       not_null_stg_customers_customer_id.sql
+    ¦           ¦       not_null_stg_trips_trip_id.sql
+    ¦           ¦       not_null_trips_trip_id.sql
+    ¦           ¦       unique_aeroplane_models_model.sql
+    ¦           ¦       unique_dim_aeroplane_models_aircraft_model.sql
+    ¦           ¦       unique_dim_customers_customer_id.sql
+    ¦           ¦       unique_fct_trips_trip_id.sql
+    ¦           ¦       unique_stg_customers_customer_id.sql
+    ¦           ¦       unique_stg_trips_trip_id.sql
+    ¦           ¦       unique_trips_trip_id.sql
+    ¦           ¦       
+    ¦           +---staging
+    ¦                   stg_aeroplane_models.sql
+    ¦                   stg_customers.sql
+    ¦                   stg_trips.sql
+    ¦                   
+    +---run
+        +---Bolt
+            +---models
+            ¦   +---marts
+            ¦   ¦   +---dimensions
+            ¦   ¦   ¦       dim_aeroplane_models.sql
+            ¦   ¦   ¦       dim_customers.sql
+            ¦   ¦   ¦       
+            ¦   ¦   +---facts
+            ¦   ¦           fct_trips.sql
+            ¦   ¦           
+            ¦   +---schema.yml
+            ¦   ¦       check_positive_ticket_price_fct_trips_ticket_price.sql
+            ¦   ¦       check_standard_phone_format_stg_customers_phone_number.sql
+            ¦   ¦       check_valid_email_stg_customers_email.sql
+            ¦   ¦       not_null_aeroplane_models_manufacturer.sql
+            ¦   ¦       not_null_aeroplane_models_model.sql
+            ¦   ¦       not_null_customers__Customer_ID_.sql
+            ¦   ¦       not_null_customers__Name_.sql
+            ¦   ¦       not_null_dim_aeroplane_models_aircraft_model.sql
+            ¦   ¦       not_null_dim_customers_customer_id.sql
+            ¦   ¦       not_null_fct_trips_ticket_price.sql
+            ¦   ¦       not_null_fct_trips_trip_id.sql
+            ¦   ¦       not_null_stg_customers_customer_id.sql
+            ¦   ¦       not_null_stg_trips_trip_id.sql
+            ¦   ¦       not_null_trips_trip_id.sql
+            ¦   ¦       unique_aeroplane_models_model.sql
+            ¦   ¦       unique_dim_aeroplane_models_aircraft_model.sql
+            ¦   ¦       unique_dim_customers_customer_id.sql
+            ¦   ¦       unique_fct_trips_trip_id.sql
+            ¦   ¦       unique_stg_customers_customer_id.sql
+            ¦   ¦       unique_stg_trips_trip_id.sql
+            ¦   ¦       unique_trips_trip_id.sql
+            ¦   ¦       
+            ¦   +---staging
+            ¦           stg_aeroplane_models.sql
+            ¦           stg_customers.sql
+            ¦           stg_trips.sql
+            ¦           
+            +---seeds
+                    aeroplane_models.csv
+                    customers.csv
+                    trips.csv
+                    

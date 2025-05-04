@@ -1,0 +1,173 @@
+version: 2
+
+seeds:
+  - name: customers
+    description: "Seeded customer data from the provided CSV file."
+    columns:
+      - name: '"Customer ID"'
+        description: "Unique ID of the customer."
+        tests:
+          - not_null
+      - name: '"Name"'
+        description: "Customer name."
+        tests:
+          - not_null
+      - name: '"Email"'
+        description: "Email address of the customer."
+      - name: '"Phone Number"'
+        description: "Phone number in raw format."
+
+  - name: aeroplane_models
+    description: "Flattened aircraft specifications from aeroplane_model.json"
+    columns:
+      - name: manufacturer
+        tests: [not_null]
+      - name: model
+        tests: [not_null, unique]
+      - name: max_seats
+      - name: max_weight
+      - name: max_distance
+      - name: engine_type
+
+  - name: trips
+    description: "Synthetic flight trips connecting customers and airplane models"
+    columns:
+      - name: trip_id
+        tests: [not_null, unique]
+      - name: customer_id
+      - name: model
+      - name: departure_date
+      - name: ticket_price
+      - name: distance_km
+      - name: flight_duration_minutes
+      - name: created_at
+      - name: updated_at
+
+models:
+  - name: stg_customers
+    description: "Staged customer data from the seed."
+    columns:
+      - name: customer_id
+        description: "Unique ID after type casting."
+        tests:
+          - not_null
+          - unique
+      - name: customer_name
+        description: "Customer full name."
+      - name: customer_group_id
+        description: "Optional group ID assigned to customer."
+      - name: email
+        description: "Normalized email address."
+        tests:
+          - check_valid_email
+      - name: phone_number
+        description: "Cleaned customer phone number."
+        tests:
+          - check_standard_phone_format
+
+  - name: dim_customers
+    description: "Dimension table with cleaned and formatted customer details."
+    columns:
+      - name: customer_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: customer_name
+        description: "Customer name in title case."
+      - name: customer_group_id
+        description: "Foreign key to customer groups."
+      - name: email_cleaned
+        description: "Lowercased email address."
+      - name: phone_number
+        description: "Phone number as-is from staging."
+
+  - name: stg_aeroplane_models
+    description: "Staging model for flattened airplane specifications"
+    columns:
+      - name: manufacturer
+        description: "Aircraft manufacturer"
+      - name: model
+        description: "Model name"
+      - name: max_seats
+        description: "Maximum seat capacity"
+      - name: max_weight
+        description: "Maximum takeoff weight"
+      - name: max_distance
+        description: "Maximum flight range"
+      - name: engine_type
+        description: "Type of engine"
+
+  - name: dim_aeroplane_models
+    description: "Final cleaned aircraft dimension for reporting"
+    columns:
+      - name: manufacturer
+        description: "Aircraft manufacturer in lowercase"
+      - name: aircraft_model
+        description: "Model name in lowercase"
+        tests:
+          - not_null
+          - unique
+      - name: max_seats
+        description: "Maximum seat capacity"
+      - name: max_weight
+        description: "Maximum takeoff weight"
+      - name: max_distance
+        description: "Maximum flight range"
+      - name: engine_type
+        description: "Type of engine installed"
+      - name: weight_per_seat
+        description: "Weight per seat ratio"
+
+  - name: stg_trips
+    description: "Staging layer for trips.csv"
+    columns:
+      - name: trip_id
+        description: "Unique identifier for trip"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Linked customer"
+      - name: model
+        description: "Airplane model"
+      - name: departure_date
+        description: "Flight departure date"
+      - name: ticket_price
+        description: "Cost of the ticket"
+      - name: distance_km
+        description: "Distance flown"
+      - name: flight_duration_minutes
+        description: "Duration in minutes"
+      - name: created_at
+        description: "Record created"
+      - name: updated_at
+        description: "Record updated"
+
+  - name: fct_trips
+    description: "Fact table for trips flown by customers"
+    columns:
+      - name: trip_id
+        description: "Trip ID"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Customer who flew"
+      - name: model
+        description: "Aircraft model used"
+      - name: departure_date
+        description: "Flight date"
+      - name: ticket_price
+        description: "Ticket price"
+        tests:
+          - not_null
+          - check_positive_ticket_price
+      - name: distance_km
+        description: "Distance flown"
+      - name: flight_duration_minutes
+        description: "Flight time"
+      - name: created_at
+        description: "Trip created timestamp"
+      - name: updated_at
+        description: "Trip last updated"

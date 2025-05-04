@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: trips_source
+    schema: public
+    description: "Seeded trips data for freshness monitoring"
+    tables:
+      - name: trips
+        description: "CSV-seeded synthetic flight trip data"
+        # NOTE: Freshness config added for demonstration purposes.
+        # However, since this is a static dbt seed file and not an external data source,
+        # freshness checks will not be meaningful in this project context.
+        loaded_at_field: created_at
+        freshness:
+          warn_after: {count: 1, period: day}
+          error_after: {count: 2, period: day}

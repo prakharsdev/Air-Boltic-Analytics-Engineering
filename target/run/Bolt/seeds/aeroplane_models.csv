@@ -1,0 +1,14 @@
+
+    
+    
+    
+    create table "air_boltic"."public_public"."aeroplane_models" ("manufacturer" text,"model" text,"max_seats" integer,"max_weight" integer,"max_distance" integer,"engine_type" text)
+  ;
+    -- dbt seed --
+    
+          insert into "air_boltic"."public_public"."aeroplane_models" ("manufacturer", "model", "max_seats", "max_weight", "max_distance", "engine_type") values
+          (%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s)
+      
+
+;
+  

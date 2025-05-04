@@ -1,0 +1,14 @@
+
+    
+    
+    
+    create table "air_boltic"."public_public"."customers" ("Customer ID" integer,"Name" text,"Customer Group ID" integer,"Email" text,"Phone Number" text)
+  ;
+    -- dbt seed --
+    
+          insert into "air_boltic"."public_public"."customers" ("Customer ID", "Name", "Customer Group ID", "Email", "Phone Number") values
+          (%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s)
+      
+
+;
+  

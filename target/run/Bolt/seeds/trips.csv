@@ -1,0 +1,14 @@
+
+    
+    
+    
+    create table "air_boltic"."public_public"."trips" ("trip_id" integer,"customer_id" integer,"model" text,"departure_date" date,"ticket_price" float8,"distance_km" integer,"flight_duration_minutes" integer,"created_at" date,"updated_at" date)
+  ;
+    -- dbt seed --
+    
+          insert into "air_boltic"."public_public"."trips" ("trip_id", "customer_id", "model", "departure_date", "ticket_price", "distance_km", "flight_duration_minutes", "created_at", "updated_at") values
+          (%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s,%s,%s,%s)
+      
+
+;
+  
