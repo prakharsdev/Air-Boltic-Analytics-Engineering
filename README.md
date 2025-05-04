@@ -256,4 +256,6 @@ In this setup, staging models were straightforward enough and didn’t require a
 
 ---
 
+## 📄 Further Explanation
 
+For a full breakdown of the design decisions and CI/CD strategy, see [AirBoltic_Assignment_Explanation.md](./AirBoltic_Assignment_Explanation.md).
