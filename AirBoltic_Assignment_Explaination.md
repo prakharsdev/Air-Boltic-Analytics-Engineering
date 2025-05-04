@@ -39,7 +39,7 @@ Because the stack includes **S3 + Databricks + dbt + Looker**, I built the proje
 * `marts/` for business-ready dimensional models
 * Custom tests (e.g., `test_valid_email.sql`, `test_positive_ticket_price.sql`) to ensure data quality
 
-This structure is explained in the [`README.md`](https://github.com/prakhar-sriv/air-boltic-analytics/blob/main/README.md) where I documented how each layer is aligned with best practices.
+This structure is explained in the [`README.md`](https://github.com/prakharsdev/Air-Boltic-Analytics-Engineering/blob/master/README.md) where I documented how each layer is aligned with best practices.
 
 #### 5. **Schema File + ERD**
 
