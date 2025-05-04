@@ -7,3 +7,4 @@ repos:
         entry: sqlfluff lint models/
         language: system
         types: [sql]
+        files: ^models/.*\.sql$
