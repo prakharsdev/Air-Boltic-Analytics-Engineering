@@ -100,6 +100,78 @@ These are accessible via dbt’s ref() function and simulate data coming from a 
 
 ---
 
+## Local Setup & Environment
+
+### Prerequisites
+
+Ensure the following are installed on your machine:
+
+* **Conda** (Miniconda or Anaconda)
+* **PostgreSQL** (13 or above)
+* **pgAdmin 4**
+* **Git**
+* **dbt CLI v1.9.4** (Python-based)
+
+### Conda Environment Setup
+
+```bash
+conda create -n bolt-dbt-env python=3.10 -y
+conda activate bolt-dbt-env
+pip install -r requirements.txt
+dbt deps
+dbt --version
+```
+
+---
+
+## dbt Configuration
+
+Create or update your `profiles.yml` file in the `.dbt` directory (e.g. `C:\Users\<YourUsername>\.dbt\profiles.yml`):
+
+```yaml
+Bolt:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: your_password
+      port: 5432
+      dbname: air_boltic
+      schema: public
+      threads: 4
+```
+
+---
+
+## PostgreSQL & pgAdmin Setup
+
+1. **Install PostgreSQL and pgAdmin**
+   Use the official installer from: [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
+
+2. **Create the `air_boltic` database**
+   Open pgAdmin, right-click on "Databases" → Create → Database → Name it `air_boltic`.
+
+3. **Enable user privileges**
+   Ensure your PostgreSQL role (e.g. `postgres`) has `CREATE` and `ALL` privileges on the `air_boltic` database.
+
+4. **Verify via pgAdmin**
+   After running `dbt run`, inspect tables like `fct_trips`, `dim_customers`, etc., under the `public` schema.
+
+---
+
+## Running the Project
+
+```bash
+dbt seed
+dbt run
+dbt test
+dbt snapshot
+```
+
+---
+
 ## Testing & Validation
 
 Custom and built-in dbt tests ensure data quality:
