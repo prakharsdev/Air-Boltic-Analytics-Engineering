@@ -18,7 +18,9 @@ Air Boltic, being a marketplace of aeroplane rides, needs deep analytical visibi
 * Simulate how this could plug into the broader data ecosystem at Bolt using S3, Databricks, dbt, and Looker.
 
 ---
-
+- **Full Project Demo video:** 
+- [![Demo video](https://www.youtube.com/watch?v=i0dSKAp4tdE)
+  
 ## Folder Structure & Components
 
 ```
