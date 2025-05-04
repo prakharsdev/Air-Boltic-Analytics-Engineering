@@ -63,7 +63,7 @@ Bolt/
 ## ERD Design Rationale
 To provide a visual understanding of the data flow, I have included a complete Entity Relationship Diagram (ERD) that reflects the modeling strategy applied. The ERD captures the lineage from raw seed inputs (CSV) through staging, transformations, dimensions, facts, and snapshots. Relationships are explicitly defined, including foreign key constraints where applicable (e.g., fct_trips.customer_id → dim_customers.customer_id). This structure reinforces a Kimball-style star schema optimized for analytical performance and scalability. It also illustrates data normalization, surrogate keys (e.g., aircraft_model), and snapshot tracking via Slowly Changing Dimensions (SCD2). The ERD supports stakeholder alignment and is critical for downstream tool integration like Looker explores or lineage visualizations in dbt Cloud.
 
-[Bolt/assets/AirBoltic_ERD.png](https://github.com/prakharsdev/Air-Boltic-Analytics-Engineering/blob/master/assets/AirBoltic_ERD.png)
+![ERD](https://github.com/prakharsdev/Air-Boltic-Analytics-Engineering/blob/master/assets/AirBoltic_ERD.png)
 
 ## Data Model Overview
 
