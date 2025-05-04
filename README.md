@@ -19,7 +19,7 @@ Air Boltic, being a marketplace of aeroplane rides, needs deep analytical visibi
 
 ---
 - **Full Project Demo video:** 
-- [![Demo video](https://www.youtube.com/watch?v=i0dSKAp4tdE)
+- [![Demo video](https://github.com/user-attachments/assets/5f885bd7-e9d1-48f2-9aec-76d920cfe9f6)](https://www.youtube.com/watch?v=i0dSKAp4tdE)
   
 ## Folder Structure & Components
 
