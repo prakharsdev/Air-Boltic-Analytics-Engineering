@@ -92,7 +92,7 @@ Using GitHub Actions or dbt Cloud CI, every PR would:
 
 * PR reviewed and approved
 * CI passes on staging
-* Merge to `main` triggers deploy to production
+* Merge to `master` triggers deploy to production
 * dbt Cloud schedules or Airflow DAGs update downstream models
 
 ---
