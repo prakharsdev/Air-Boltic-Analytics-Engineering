@@ -16,19 +16,23 @@ Before touching the data, I focused on understanding the core of Air Boltic’s 
 
 #### 2. **Choosing a Dimensional Modeling Approach**
 
-Given the focus on reporting and self-service analytics (via Looker), I used a **Kimball-style dimensional model**. This method provides clarity, separation of concerns, and intuitive reporting layers. I designed clear **fact tables** (e.g., `fct_orders`, `fct_trips`) and **dimension tables** (e.g., `dim_customers`, `dim_airplanes`, `dim_routes`, etc.).
+Given the focus on reporting and self-service analytics (via Looker), I used a **Kimball-style dimensional model**. This method provides clarity, separation of concerns, and intuitive reporting layers. I designed clear **fact tables** (e.g., `fct_trips`) and **dimension tables** (e.g., `dim_customers`, `dim_aeroplane_models`) that support analytical queries across customer behavior and flight operations.
+
+While `fct_orders` and `dim_routes` are not implemented in this assignment, they were considered during the design phase as logical next extensions to support order-level revenue analysis and geographic aggregations, respectively.
+
+---
 
 #### 3. **Key Decisions in the Model**
 
 * **Normalization where necessary:** Dimensions are de-duplicated and centralized to reduce maintenance and support flexible joins.
-* **Snapshotting for slow-changing dimensions:** For airplane models and customer groups, I imagined slowly changing attributes, so I added a note to use `dbt snapshots` for change tracking (documented in `snapshots/`).
+* **Snapshotting for slow-changing dimensions:** For airplane models and customer data, I considered slowly changing attributes and demonstrated how `dbt snapshots` could track changes over time (see `snapshots/`).
 * **Fact granularity:**
 
-  * `fct_trips`: One row per trip.
-  * `fct_orders`: One row per seat booked.
-  * This allows fine-grained revenue and utilization analysis.
-* **Route dimension**: Since origin and destination are key analytical dimensions, I extracted them into a `dim_routes` table. This helps simplify joins for route-based performance tracking.
-* **Metrics layer flexibility**: Key metrics like `DAU`, `WAU`, `trip fill rate`, and `revenue per region` can be derived from the base fact tables using Looker or a metrics layer.
+  * `fct_trips`: One row per trip — supports duration, pricing, and distance-based analysis.
+  * `fct_orders`: Not implemented here, but envisioned as a future table representing seat-level booking activity.
+* **Route dimension (not implemented):** Recognizing origin/destination as key metrics, a `dim_routes` table could be introduced in the future to simplify route-based metrics.
+* **Metrics layer flexibility:** Key KPIs like `trip fill rate`, `revenue by region`, or `trip frequency per user` can be derived from the core tables and exposed through Looker explores or a metrics layer.
+
 
 #### 4. **Tooling Choices**
 
@@ -37,7 +41,7 @@ Because the stack includes **S3 + Databricks + dbt + Looker**, I built the proje
 * `staging/` layer for raw ingestion
 * `intermediate/` for cleansing and enrichment
 * `marts/` for business-ready dimensional models
-* Custom tests (e.g., `test_valid_email.sql`, `test_positive_ticket_price.sql`) to ensure data quality
+* Custom tests (e.g., `check_valid_email.sql`, `check_positive_ticket_price.sql` and `check_standard_phone_format.sql`) to ensure data quality
 
 This structure is explained in the [`README.md`](https://github.com/prakharsdev/Air-Boltic-Analytics-Engineering/blob/master/README.md) where I documented how each layer is aligned with best practices.
 

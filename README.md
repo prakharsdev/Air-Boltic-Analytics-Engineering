@@ -83,6 +83,24 @@ Three CSV files were provided and seeded into the database:
 
 These are accessible via dbt’s ref() function and simulate data coming from a raw data lake or external S3 source.
 
+### Synthetic Data Source: `trips.csv`
+
+The `trips.csv` file included in the `seeds/` directory is manually generated synthetic data to simulate a realistic fact table of flight activity. Since no real transactional dataset was available, I curated this data based on plausible assumptions for:
+
+* Customer-to-flight mappings
+* Flight durations
+* Departure dates across a historical window
+* Ticket pricing logic
+* Route distances and timestamps
+
+**Purpose of `trips.csv`**:
+
+* To enable meaningful transformation logic in `stg_trips` and `fct_trips`
+* To demonstrate how incremental loading can work using the `updated_at` timestamp
+* To build and test dbt snapshot capabilities on time-evolving data
+
+In production, this data would originate from a real-time order or booking system and land in cloud storage (e.g., S3). But for this assignment, it serves as a strong foundation for simulating downstream modeling, testing, and freshness monitoring workflows.
+
 
 ### Staging Layer
 
@@ -221,7 +239,27 @@ I've used schema.yml to define model-level documentation and integrated both sta
 The structure is designed for integration with GitHub Actions and dbt Cloud, supporting automated workflows such as pull request checks, scheduled jobs, and deployment processes. Everything is version-controlled to facilitate team collaboration.
 
 * **Linting & Pre-Commit Hooks**
-I included a .pre-commit-config.yaml and SQLFluff configuration to catch formatting issues before they reach production. These hooks help enforce coding standards automatically, saving review cycles and reducing human error.
+  I included a `.pre-commit-config.yaml` and SQLFluff configuration to catch formatting issues before they reach production. These hooks help enforce coding standards automatically, saving review cycles and reducing human error.
+
+### Pre-Commit Hook Usage (Local Workflow)
+
+This project uses [`pre-commit`](https://pre-commit.com/) hooks to enforce coding standards and prevent poor formatting from being committed into the repo.
+
+**Setup once:**
+
+```bash
+pre-commit install
+```
+
+This will register the hooks specified in `.pre-commit-config.yaml` to run automatically before every commit.
+
+**What happens on `git commit`:**
+
+* `sqlfluff lint` will validate SQL files based on configured dialect and style rules (in `.sqlfluff`).
+* If any linting or formatting issue is found, the commit will fail with a detailed message showing what needs fixing.
+* Once fixed, simply `git add` and `git commit` again.
+
+This ensures code consistency, prevents manual errors, and maintains high-quality SQL structure throughout the project lifecycle.
 
 * **Environment Reproducibility**
 A requirements.txt file is provided to reproduce the environment across machines or CI agents. This ensures smooth onboarding and consistent execution, regardless of where the code runs.
